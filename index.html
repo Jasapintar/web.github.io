@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard JASAPINTAR.ID</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #7c3aed 0%, #ede9fe 100%);
+      font-family: 'Inter', Arial, sans-serif;
+      color: #3c1361;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px 60px;
+      min-height: 100vh;
+    }
+    .main-content {
+      max-width: 900px;
+      width: 100%;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.25);
+      padding: 40px 40px 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    /* Header JASAPINTAR.ID */
+    header.site-header {
+      font-weight: 700;
+      font-size: 2.2rem;
+      color: #5b21b6;
+      text-align: center;
+      letter-spacing: 3px;
+      user-select: none;
+      margin-bottom: 10px;
+    }
+    /* Greeting & Status Bisnis */
+    .greeting-section {
+      text-align: center;
+      color: #4c1d95;
+      user-select: none;
+    }
+    .greeting-section .welcome {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .greeting-section .status-bisnis {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #7c3aed;
+      letter-spacing: 0.08em;
+    }
+    /* Header search */
+    .header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 15px;
+    }
+    .header .search-box {
+      background: #ede9fe;
+      border-radius: 8px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.15);
+      max-width: 280px;
+      width: 100%;
+      color: #5b21b6;
+    }
+    .header .search-box input {
+      border: none;
+      outline: none;
+      background: none;
+      font-size: 1rem;
+      margin-left: 8px;
+      width: 100%;
+      color: #3c1361;
+    }
+    /* Card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #faf8ff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(124, 58, 237, 0.07);
+      padding: 28px 24px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 120px;
+      border: 1px solid #ddd6fe;
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+      color: #4c1d95;
+    }
+    .card:hover {
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.15);
+    }
+    .card .icon {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: #7c3aed;
+      background: #ede9fe;
+      padding: 10px;
+      border-radius: 12px;
+    }
+    .card .label {
+      font-size: 0.95rem;
+      color: #7c3aed;
+      margin-bottom: 5px;
+      user-select: none;
+    }
+    .card .value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #4c1d95;
+      user-select: text;
+    }
+    /* Shortcut Title */
+    .shortcut-title {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #5b21b6;
+      margin-bottom: 18px;
+      user-select: none;
+      text-align: center;
+      letter-spacing: 0.1em;
+    }
+    /* Shortcut buttons container */
+    .shortcuts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+      gap: 22px;
+      justify-items: center;
+    }
+    /* Shortcut button persegi */
+    .shortcut-btn {
+      background: #7c3aed;
+      color: white;
+      border-radius: 16px;
+      padding: 18px 12px 14px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 6px 15px rgba(124, 58, 237, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 100px;
+      user-select: none;
+    }
+    .shortcut-btn:hover {
+      background: #5b21b6;
+      box-shadow: 0 8px 20px rgba(91, 33, 182, 0.6);
+      transform: translateY(-4px);
+    }
+    .shortcut-btn i {
+      font-size: 2.4rem;
+      line-height: 1;
+      user-select: none;
+    }
+    .shortcut-btn span {
+      text-align: center;
+      user-select: none;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .main-content {
+        padding: 30px 20px 40px;
+      }
+      .header {
+        justify-content: center;
+      }
+      .header .search-box {
+        max-width: 100%;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .shortcuts {
+        grid-template-columns: repeat(auto-fit,minmax(80px,1fr));
+        gap: 18px;
+      }
+      .shortcut-btn {
+        width: 80px;
+        padding: 16px 8px 12px;
+        font-size: 0.85rem;
+      }
+      .shortcut-btn i {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="main-content">
+    <header class="site-header">JASAPINTAR.ID</header>
+
+    <section class="greeting-section">
+      <div class="welcome">Halo, Selamat Datang di Dashboard!</div>
+      <div class="status-bisnis">Status Bisnis</div>
+    </section>
+
+    <div class="header">
+      <div class="search-box" role="search">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input type="search" placeholder="Cari..." aria-label="Cari" />
+      </div>
+    </div>
+
+    <div class="card-grid" aria-label="Informasi Pesanan dan Pendapatan">
+      <article class="card" role="region" aria-labelledby="pesanan-selesai-label">
+        <div class="icon" aria-hidden="true"><i class="fas fa-check-circle"></i></div>
+        <div id="pesanan-selesai-label" class="label">Pesanan Selesai</div>
+        <div id="pesanan-selesai" class="value" aria-live="polite">...</div>
+      </article>
+      <article class="card" role="region" aria-labelledby="pesanan-belum-selesai-label">
+        <div class="icon" aria-hidden="true"><i class="fas fa-hourglass-half"></i></div>
+        <div id="pesanan-belum-selesai-label" class="label">Pesanan Belum Selesai</div>
+        <div id="pesanan-belum-selesai" class="value" aria-live="polite">...</div>
+      </article>
+      <article class="card" role="region" aria-labelledby="total-pendapatan-label">
+        <div class="icon" aria-hidden="true"><i class="fas fa-wallet"></i></div>
+        <div id="total-pendapatan-label" class="label">Total Pendapatan</div>
+        <div id="total-pendapatan" class="value" aria-live="polite">...</div>
+      </article>
+    </div>
+
+    <h2 class="shortcut-title">Shortcut</h2>
+    <nav class="shortcuts" aria-label="Tombol pintasan">
+      <a href="https://www.instagram.com/jasapintar.id/" target="_blank" rel="noopener" class="shortcut-btn" title="Instagram">
+        <i class="fab fa-instagram" aria-hidden="true"></i>
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.tiktok.com/@jasapintar.id" target="_blank" rel="noopener" class="shortcut-btn" title="TikTok">
+        <i class="fab fa-tiktok" aria-hidden="true"></i>
+        <span>TikTok</span>
+      </a>
+      <a href="https://web.whatsapp.com/" target="_blank" rel="noopener" class="shortcut-btn" title="WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        <span>WhatsApp</span>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1krdpWDbRyZkgiDZGCpFjTZ6sYIDB55G0DcLRzQz-gsA/edit?usp=sharing" target="_blank" rel="noopener" class="shortcut-btn" title="Daftar Pesanan">
+        <i class="fas fa-file-excel" aria-hidden="true"></i>
+        <span>Daftar Pesanan</span>
+      </a>
+      <a href="https://drive.google.com/drive/folders/1zHAT7w-jpNRiiiqYujei5sWv69YFv0Ag" target="_blank" rel="noopener" class="shortcut-btn" title="Folder Konten">
+        <i class="fas fa-folder-open" aria-hidden="true"></i>
+        <span>Folder Konten</span>
+      </a>
+      <a href="https://drive.google.com/drive/folders/1HH43rERzM46LEMseFo00J2AtrmcFmjHu?usp=sharing" target="_blank" rel="noopener" class="shortcut-btn" title="Folder Pesanan">
+        <i class="fas fa-folder" aria-hidden="true"></i>
+        <span>Folder Pesanan</span>
+      </a>
+      <a href="https://www.canva.com/" target="_blank" rel="noopener" class="shortcut-btn" title="Canva">
+        <i class="fas fa-paint-brush" aria-hidden="true"></i>
+        <span>Canva</span>
+      </a>
+      <a href="https://keep.google.com/" target="_blank" rel="noopener" class="shortcut-btn" title="Notes">
+        <i class="fas fa-sticky-note" aria-hidden="true"></i>
+        <span>Notes</span>
+      </a>
+      <a href="https://chatgpt.com/" target="_blank" rel="noopener" class="shortcut-btn" title="GPT">
+        <i class="fas fa-robot" aria-hidden="true"></i>
+        <span>GPT</span>
+      </a>
+      <a href="https://www.perplexity.ai/" target="_blank" rel="noopener" class="shortcut-btn" title="Perplexity">
+        <i class="fas fa-brain" aria-hidden="true"></i>
+        <span>Perplexity</span>
+      </a>
+    </nav>
+  </main>
+
+  <script>
+    // Ganti dengan URL Web App Google Apps Script kamu!
+    const API_URL = 'https://script.google.com/macros/s/AKfycbw7UJVbd_cktUMX2Yp5ookO51r2-C9iR61u8Ol46IOh7TP5vMewf52jVgHIPqzYYuSC/exec';
+
+    async function fetchData() {
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error('Gagal mengambil data');
+        const data = await response.json();
+
+        document.getElementById('pesanan-selesai').textContent = data.pesananSelesai;
+        document.getElementById('pesanan-belum-selesai').textContent = data.pesananBelumSelesai;
+        document.getElementById('total-pendapatan').textContent = new Intl.NumberFormat('id-ID', {
+          style: 'currency',
+          currency: 'IDR'
+        }).format(data.totalPendapatan);
+      } catch (error) {
+        ['pesanan-selesai','pesanan-belum-selesai','total-pendapatan'].forEach(id => {
+          document.getElementById(id).textContent = 'Error';
+        });
+      }
+    }
+    fetchData();
+  </script>
+</body>
+</html>
